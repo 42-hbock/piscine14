@@ -1,0 +1,47 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   colle04.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hbock <hbock@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/07/06 04:57:12 by hbock             #+#    #+#             */
+/*   Updated: 2014/07/06 04:57:14 by hbock            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void		ft_putchar(char c);
+
+void		print(char a, char b, char c, int y)
+{
+	int		i;
+
+	i = 0;
+	while (i < y)
+	{
+		if (i == 0)
+			ft_putchar(a);
+		else if (i == (y - 1))
+			ft_putchar(c);
+		else
+			ft_putchar(b);
+		i++;
+	}
+}
+
+void		colle(int x, int y)
+{
+	int		i;
+
+	i = 0;
+	while (i < y)
+	{
+		if ((i == 0) || (i == (y - 1)))
+			print('o', '-', 'o', x);
+		else
+			print('|', ' ', '|', x);
+		if (x != 0)
+			ft_putchar('\n');
+		i++;
+	}
+}
