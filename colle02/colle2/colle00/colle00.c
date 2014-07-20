@@ -12,16 +12,16 @@
 
 void		ft_putchar(char c);
 
-void		print(char a, char b, char c, int y)
+void		print(char a, char b, char c, int x)
 {
 	int		i;
 
 	i = 0;
-	while (i < y)
+	while (i < x)
 	{
 		if (i == 0)
 			ft_putchar(a);
-		else if (i == (y - 1))
+		else if (i == (x - 1))
 			ft_putchar(c);
 		else
 			ft_putchar(b);

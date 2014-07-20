@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "colle2.h"
+void		ft_putchar(char c);
 
-int			print(char a, char b, char c, int x, int index_c2, char *to_test)
+void		print(char a, char b, char c, int x, int index_c2, char *to_test)
 {
 	int		i;
 
@@ -20,56 +20,30 @@ int			print(char a, char b, char c, int x, int index_c2, char *to_test)
 	while (i < x)
 	{
 		if (i == 0)
-		{
-			if (ft_char_cmp(a, to_test[index_c2]))
-				return (-1);
-			else
-				index_c2++;
-		}
+			ft_putchar(a);
 		else if (i == (x - 1))
-		{
-			if (ft_char_cmp(c, to_test[index_c2]))
-				return (-1);
-			else
-				index_c2++;
-		}
+			ft_putchar(c);
 		else
-		{
-			if (ft_char_cmp(b, to_test[index_c2]))
-				return (-1);
-			else
-				index_c2++;
-		}
+			ft_putchar(b);
 		i++;
 	}
-	return (index_c2);
 }
 
-int			colle00(int x, int y, char *to_test)
+void		colle(int x, int y)
 {
 	int		i;
-	int		index_c2;
 
-	index_c2 = 0;
 	i = 0;
 	while (i < y)
 	{
-		if ((i == 0) || (i == (y - 1)))
-		{
-			if ((index_c2 = print('o', '-', 'o', x, index_c2, to_test)) == -1)
-				return (1);
-		}
+		if (i == 0)
+			print('/', '*', '\\', x);
+		else if (i == (y - 1))
+			print('\\', '*', '/', x);
 		else
-		{
-			if ((index_c2 = print('|', ' ', '|', x, index_c2, to_test)) == -1)
-				return (1);
-		}
+			print('*', ' ', '*', x);
 		if (x != 0)
-		{
-			if (to_test[index_c2 + 1])
-				index_c2++;
-		}
+			ft_putchar('\n');
 		i++;
 	}
-	return (0);
 }

@@ -14,6 +14,24 @@
 # define	COLLE2_H
 
 # include <unistd.h>
+# include <sys/types.h>
+# include <stdlib.h>
+# include <stdio.h>
+
+typedef struct		s_coord
+{
+	int			x;
+	int			y;
+}					t_coord;
+
+typedef struct		s_match
+{
+	int			c00;
+	int			c01;
+	int			c02;
+	int			c03;
+	int			c04;
+}					t_match;
 
 int			s_len(char *s);
 void		ft_putstr(char *s);
@@ -24,5 +42,8 @@ int			print(char a, char b, char c, int x, int index_c2, char *colle2);
 int			ft_char_cmp(char a, char b);
 void		ft_putnbr(int n);
 void		ft_putchar(char c);
+char		*ft_strcpy(char *dst, char *src);
+char		*ft_reallocat(char *dst, char *src);
+int			colle00_test(t_coord dim, char *to_test);
 
 #endif
