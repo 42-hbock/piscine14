@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colle01.c                                          :+:      :+:    :+:   */
+/*   colle02.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbock <hbock@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,40 +10,38 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void		ft_putchar(char c);
+#include "colle2.h"
 
-void		print(char a, char b, char c, int x)
+int			colle02(int x, int y, char *to_test)
 {
 	int		i;
+	int		index_c2;
 
-	i = 0;
-	while (i < x)
-	{
-		if (i == 0)
-			ft_putchar(a);
-		else if (i == (x - 1))
-			ft_putchar(c);
-		else
-			ft_putchar(b);
-		i++;
-	}
-}
-
-void		colle(int x, int y)
-{
-	int		i;
-
+	index_c2 = 0;
 	i = 0;
 	while (i < y)
 	{
 		if (i == 0)
-			print('/', '*', '\\', x);
+		{
+			if ((index_c2 = print('A', 'B', 'A', x, index_c2, to_test)) == -1)
+				return (1);
+		}
 		else if (i == (y - 1))
-			print('\\', '*', '/', x);
+		{
+			if ((index_c2 = print('C', 'B', 'C', x, index_c2, to_test)) == -1)
+				return (1);
+		}
 		else
-			print('*', ' ', '*', x);
+		{
+			if ((index_c2 = print('B', ' ', 'B', x, index_c2, to_test)) == -1)
+				return (1);
+		}
 		if (x != 0)
-			ft_putchar('\n');
+		{
+			if (to_test[index_c2 + 1])
+				index_c2++;
+		}
 		i++;
 	}
+	return (0);
 }

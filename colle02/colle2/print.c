@@ -33,15 +33,6 @@ void		ft_putendl(char *s)
 	write(1, "\n", 1);
 }
 
-void		ft_put_match(char *colle, int x, int y)
-{
-	ft_putstr(colle);
-	ft_putnbr(x);
-	ft_putstr("] [");
-	ft_putnbr(y);
-	ft_putstr("]");
-}
-
 void		ft_putchar(char c)
 {
 	write(1, &c, 1);

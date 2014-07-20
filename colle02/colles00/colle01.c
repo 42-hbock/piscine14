@@ -10,40 +10,71 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void		ft_putchar(char c);
+#include "colle2.h"
 
-void		print(char a, char b, char c, int y)
+int			print(char a, char b, char c, int x, int index_c2, char *to_test)
 {
 	int		i;
 
 	i = 0;
-	while (i < y)
+	while (i < x)
 	{
 		if (i == 0)
-			ft_putchar(a);
-		else if (i == (y - 1))
-			ft_putchar(c);
+		{
+			if (ft_char_cmp(a, to_test[index_c2]))
+				return (-1);
+			else
+				index_c2++;
+		}
+		else if (i == (x - 1))
+		{
+			if (ft_char_cmp(c, to_test[index_c2]))
+				return (-1);
+			else
+				index_c2++;
+		}
 		else
-			ft_putchar(b);
+		{
+			if (ft_char_cmp(b, to_test[index_c2]))
+				return (-1);
+			else
+				index_c2++;
+		}
 		i++;
 	}
+	return (index_c2);
 }
 
-void		colle(int x, int y)
+void		colle01(int x, int y, char *to_test)
 {
 	int		i;
+	int		index_c2;
 
+	index_c2 = 0;
 	i = 0;
 	while (i < y)
 	{
 		if (i == 0)
-			print('/', '*', '\\', x);
+		{
+			if ((index_c2 = print('/', '*', '\\', x, index_c2, to_test)) == -1)
+				return (1);
+		}
 		else if (i == (y - 1))
-			print('\\', '*', '/', x);
+		{
+			if ((index_c2 = print('\\', '*', '/', x, index_c2, to_test)) == -1)
+				return (1);
+		}
 		else
-			print('*', ' ', '*', x);
+		{
+			if ((index_c2 = print('*', ' ', '*', x, index_c2, to_test)) == -1)
+				return (1);
+		}
 		if (x != 0)
-			ft_putchar('\n');
+		{
+			if (to_test[index_c2 + 1])
+				index_c2++;
+		}
 		i++;
 	}
+	return (0);
 }

@@ -30,6 +30,63 @@ t_coord			count_x_y(char *to_test)
 	return (dimensions);
 }
 
+void			ft_put_res(char *nb_col, t_coord dim, int no_first)
+{
+	if (no_first)
+		ft_putstr(" || ");
+	ft_putstr("[colle-");
+	ft_putstr(nb_col);
+	ft_putstr("] [");
+	ft_putnbr(dim.x);
+	ft_putstr("] [");
+	ft_putnbr(dim.y);
+	ft_putstr("]");
+}
+
+void			print_res(t_match test, t_coord dim)
+{
+	int			more_one;
+
+	more_one = 0;
+	if (test.c00)
+	{
+		ft_put_res("00", dim, 0);
+		more_one = 1;
+	}
+	if (test.c01)
+	{
+		if (more_one)
+			ft_put_res("01", dim, 1);
+		else 
+			ft_put_res("01", dim, 0);
+		more_one = 1;
+	}
+	if (test.c02)
+	{
+		if (more_one)
+			ft_put_res("02", dim, 1);
+		else 
+			ft_put_res("02", dim, 0);
+		more_one = 1;
+	}
+	if (test.c03)
+	{
+		if (more_one)
+			ft_put_res("03", dim, 1);
+		else 
+			ft_put_res("03", dim, 0);
+		more_one = 1;
+	}
+	if (test.c04)
+	{
+		if (more_one)
+			ft_put_res("04", dim, 1);
+		else 
+			ft_put_res("04", dim, 0);
+		more_one = 1;
+	}
+}
+
 void			test_colles0(char *to_test)
 {
 	t_match		test;
@@ -41,11 +98,17 @@ void			test_colles0(char *to_test)
 	test.c03 = 0;
 	test.c04 = 0;
 	dim = count_x_y(to_test);
-	printf("x - %d\ny - %d\n", dim.x, dim.y);
 	if (colle00_test(dim, to_test))
 		test.c00 = 1;
 	if (colle01_test(dim, to_test))
 		test.c01 = 1;
+	if (colle02_test(dim, to_test))
+		test.c02 = 1;
+	if (colle03_test(dim, to_test))
+		test.c03 = 1;
+	if (colle04_test(dim, to_test))
+		test.c04 = 1;
+	print_res(test, dim);
 }
 
 int				main()
@@ -59,7 +122,10 @@ int				main()
 	while ((nread = read(0, buf, 128)) && (nread != -1))
 	{
 		if (nread == -1)
+		{
 			ft_putendl("reading error");
+			return (0);
+		}
 		else
 			to_test = ft_reallocat(to_test, buf);
 	}
